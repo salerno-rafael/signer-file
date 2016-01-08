@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+mainClassName = "org.sample.Main"
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.itextpdf:itextpdf:5.5.4'
+    compile 'org.bouncycastle:bcprov-jdk15on:1.51'
+    compile 'org.bouncycastle:bcpkix-jdk15on:1.51'
+    compile 'log4j:log4j:1.2.17'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
